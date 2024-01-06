@@ -37,10 +37,10 @@ class InternetSpeedTwitterBot:
         sign_in_with_google = self.driver.find_element(By.LINK_TEXT, value="Sign in with Google")
         sign_in_with_google.click()
         time.sleep(3)
-        tweet_button = self.driver.find_element(By.LINK_TEXT, value="Tweet")
-        tweet_button.click()
-        active = self.driver.switch_to.active_element
-        active.send_keys(f"Download speed was {self.down} Mbps and Upload was {self.up} Mbps. Fix it please")
+        draft_post = self.driver.find_element(By.CLASS_NAME, value="public-DraftStyleDefault-block")
+        draft_post.send_keys(f"Download speed was {self.down} Mbps and Upload was {self.up} Mbps. Fix it please")
+        post_button = self.driver.find_element(By.XPATH, value="//*[@id='react-root']/div/div/div[2]/main/div/div/div/div/div/div[3]/div/div[2]/div[1]/div/div/div/div[2]/div[2]/div[2]/div/div/div/div/div/span/span")
+        post_button.click()
         time.sleep(15)
 
     def quit(self):
